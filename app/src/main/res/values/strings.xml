@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">ExpenseTracker</string>
+    <string name="title_activity_profile_page">ProfilePageActivity</string>
+    <string name="trip_tab">Trip Tab</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="user_profile">User Profile</string>
+    <string name="welcome">Welcome,</string>
+    <string name="trips">TRIPS</string>
+    <string name="tripimagebutton">TripImageButton</string>
+    <string name="sign_up2">SIGN UP</string>
+    <string name="create_password">Create Password</string>
+    <string name="sign_up_now">SIGN UP NOW</string>
+    <string name="create_username">Create Username</string>
+    <string name="all_trips_activity">All Trips Activity</string>
+    <string name="select_a_trip">Select A Trip</string>
+    <string name="view_trip">View Trip</string>
+    <string name="create_new_trip">Create NEW Trip</string>
+    <string name="back">BACK</string>
+    <string name="trip_details">Trip Details</string>
+    <string name="your_expenses">Your Expenses:</string>
+    <string name="trip_expense_total">Trip Expense Total:</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="add_your_expense">Add Your Expense</string>
+    <string name="expense_name_or_description">Expense Name or Description</string>
+    <string name="amount">Amount</string>
+    <string name="add_this_expense">Add This Expense</string>
+    <string name="cancel">Cancel</string>
 </resources>
