@@ -1,0 +1,177 @@
+# this is an auto generated file. This will be overwritten
+
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    username
+    trips {
+      items {
+        id
+        userID
+        name
+        createdAt
+        updatedAt
+        userTripsId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      username
+      trips {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetTrip($id: ID!) {
+  getTrip(id: $id) {
+    id
+    userID
+    user {
+      id
+      username
+      trips {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+    name
+    expenses {
+      items {
+        id
+        tripID
+        description
+        amount
+        createdAt
+        updatedAt
+        tripExpensesId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    userTripsId
+    __typename
+  }
+}
+
+query ListTrips(
+  $filter: ModelTripFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTrips(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      userID
+      user {
+        id
+        username
+        createdAt
+        updatedAt
+        __typename
+      }
+      name
+      expenses {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      userTripsId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+
+query GetExpense($id: ID!) {
+  getExpense(id: $id) {
+    id
+    tripID
+    trip {
+      id
+      userID
+      user {
+        id
+        username
+        createdAt
+        updatedAt
+        __typename
+      }
+      name
+      expenses {
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      userTripsId
+      __typename
+    }
+    description
+    amount
+    createdAt
+    updatedAt
+    tripExpensesId
+    __typename
+  }
+}
+
+query ListExpenses(
+  $filter: ModelExpenseFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listExpenses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      tripID
+      trip {
+        id
+        userID
+        name
+        createdAt
+        updatedAt
+        userTripsId
+        __typename
+      }
+      description
+      amount
+      createdAt
+      updatedAt
+      tripExpensesId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
