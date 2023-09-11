@@ -13,6 +13,24 @@
         android:theme="@style/Theme.ExpenseTracker"
         tools:targetApi="31">
         <activity
+            android:name=".activity.AddExpenseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CreateTripActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.TripDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.AllTripsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ProfilePageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

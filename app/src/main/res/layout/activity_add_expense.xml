@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.AddExpenseActivity">
 
     <TextView
-        android:id="@+id/MainActivityTitleTextView"
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/trip_tab"
+        android:text="@string/add_your_expense"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -19,68 +19,58 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/MainActivityUsernameTextView"
+        android:id="@+id/AddExpenseActivityDescriptionPlainText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints=""
+        android:layout_marginEnd="50dp"
         android:ems="10"
-        android:hint="@string/enter_username"
+        android:hint="@string/expense_name_or_description"
         android:inputType="text"
         android:minHeight="48dp"
         android:textColorHint="#8D6E63"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityTitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        android:autofillHints=""
         tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
-        android:id="@+id/MainActivityEmailTextView"
-        android:layout_width="0dp"
+        android:id="@+id/AddExpenseActivityAmountNumberTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="40dp"
-        android:autofillHints=""
         android:ems="10"
-        android:hint="@string/enter_email"
-        android:inputType="textEmailAddress"
+        android:hint="@string/amount"
+        android:inputType="numberDecimal"
         android:minHeight="48dp"
         android:textColorHint="#8D6E63"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityUsernameTextView"
-        tools:ignore="VisualLintTextFieldSize" />
+        app:layout_constraintTop_toBottomOf="@+id/AddExpenseActivityDescriptionPlainText"
+        android:autofillHints="" />
 
     <Button
-        android:id="@+id/MainActivityLoginButton"
-        android:layout_width="0dp"
+        android:id="@+id/AddExpenseActivityAddThisExpenseButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="90dp"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="90dp"
-        android:text="@string/login"
+        android:text="@string/add_this_expense"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityEmailTextView"
-        tools:ignore="VisualLintButtonSize" />
+        app:layout_constraintTop_toBottomOf="@+id/AddExpenseActivityAmountNumberTextView" />
 
     <Button
-        android:id="@+id/MainActivitySignUpButton"
-        android:layout_width="0dp"
+        android:id="@+id/AddExpenseActivityCancelButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:text="@string/sign_up"
+        android:layout_marginTop="25dp"
+        android:text="@string/cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MainActivityLoginButton"
-        tools:ignore="VisualLintButtonSize" />
+        app:layout_constraintTop_toBottomOf="@+id/AddExpenseActivityAddThisExpenseButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>
