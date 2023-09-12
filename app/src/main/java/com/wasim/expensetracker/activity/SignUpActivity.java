@@ -18,9 +18,9 @@ public class SignUpActivity extends AppCompatActivity {
     private final String TAG = "SIGNUP ACTIVITY";
 
     Button signUpNowButton;
-
     EditText usernameEditText;
     EditText passwordEditText;
+    EditText emailEditText;  // Declare EditText for email
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,27 +30,35 @@ public class SignUpActivity extends AppCompatActivity {
         signUpNowButton = findViewById(R.id.SignUpActivitySignUpButton);
         usernameEditText = findViewById(R.id.SignUpActivityCreateUsernamePlainText);
         passwordEditText = findViewById(R.id.SignUpActivityCreatePasswordTextView);
+        emailEditText = findViewById(R.id.SignUpActivityEmailEditText);  // Find email EditText by ID
+
 
         setupSignUpNowButton();
     }
 
+
     void setupSignUpNowButton() {
-
         signUpNowButton.setOnClickListener(view -> {
+            String username = usernameEditText.getText().toString();
+            String password = passwordEditText.getText().toString();
+            String email = emailEditText.getText().toString();
 
-            Amplify.Auth.signUp(usernameEditText.getText().toString(),
-                    passwordEditText.getText().toString(),
+            Amplify.Auth.signUp(
+                    email,
+                    password,
                     AuthSignUpOptions.builder()
-                            .userAttribute(AuthUserAttributeKey.preferredUsername(), usernameEditText.getText().toString())
+                            .userAttribute(AuthUserAttributeKey.email(), email)
+//                            .userAttribute(AuthUserAttributeKey.preferredUsername(), username)
                             .build(),
                     successResponse -> {
-                        Log.i(TAG, "Sign Up SUCCESSFULL" + successResponse);
+                        Log.i(TAG, "Sign Up SUCCESSFUL" + successResponse);
                         Intent goToProfilePageActivity = new Intent(SignUpActivity.this, ProfilePageActivity.class);
                         startActivity(goToProfilePageActivity);
                     },
                     failureResponse -> Log.i(TAG, "Sign Up FAILED" + failureResponse)
             );
         });
-
     }
+
+
 }
