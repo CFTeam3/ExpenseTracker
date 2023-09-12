@@ -9,17 +9,18 @@
 
     <TextView
         android:id="@+id/MainActivityTitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="207dp"
+        android:layout_height="52dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/metamorphous"
         android:text="@string/trip_tab"
-        android:textColor="#FFD400"
+        android:textColor="#D991F3"
         android:textSize="40sp"
         android:textStyle="bold | italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
 
     <EditText
         android:id="@+id/MainActivityUsernameTextView"
@@ -33,7 +34,7 @@
         android:hint="@string/enter_username"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColorHint="#8D6E63"
+        android:textColorHint="#A1887F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +49,7 @@
         android:layout_marginTop="252dp"
         android:layout_marginEnd="90dp"
         android:text="@string/login"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +82,7 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:textColorHint="#8D6E63"
+        android:textColorHint="#A1887F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,13 +93,14 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/MainActivityBGImage"
         android:elevation="-3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/bgimg1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
