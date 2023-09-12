@@ -35,9 +35,10 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation 'com.amplifyframework:core:1.24.0'
-    implementation 'com.amplifyframework:aws-auth-cognito:1.24.0'
-
+    implementation 'com.amplifyframework:aws-api:2.11.2'
     implementation 'com.amplifyframework:aws-api-appsync:1.24.0'
+
+    implementation 'com.amplifyframework:aws-auth-cognito:1.24.0'
 
 
     testImplementation 'junit:junit:4.13.2'
