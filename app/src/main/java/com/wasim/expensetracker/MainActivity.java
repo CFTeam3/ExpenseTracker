@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 
 
+import com.amplifyframework.core.Amplify;
 import com.wasim.expensetracker.activity.ProfilePageActivity;
 import com.wasim.expensetracker.activity.SignUpActivity;
 
@@ -15,23 +17,37 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "MAIN ACTIVITY";
 
+    Button loginButton;
+
+    EditText passwordEditText;
+
+    EditText emailEditText;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loginButton = findViewById(R.id.MainActivityLoginButton);
+        passwordEditText = findViewById(R.id.MainActivityPasswordTextView);
+        emailEditText = findViewById(R.id.MainActivityEmailTextView);
 
         setupLoginButton();
         setupSignUpButton();
     }
 
-    private void setupLoginButton() {
-        Button loginButton = findViewById(R.id.MainActivityLoginButton);
-
-        loginButton.setOnClickListener(view ->  {
-            Intent goToProfilePageActivity = new Intent(MainActivity.this, ProfilePageActivity.class);
-            startActivity(goToProfilePageActivity);
+    void setupLoginButton() {
+         loginButton.setOnClickListener(v -> {
+            Amplify.Auth.signIn(emailEditText.getText().toString(),
+                    passwordEditText.getText().toString(),
+                    success -> {
+                        Log.i(TAG, "Login SUCCEEDED" + success.toString());
+                        Intent goToProfilePageActivity = new Intent(MainActivity.this, ProfilePageActivity.class);
+                        startActivity(goToProfilePageActivity);
+                    },
+                    failure -> Log.i(TAG, "Login FAILED" + failure.toString())
+            );
         });
-        Log.v(TAG, "Login Button: ");
     }
 
     private void setupSignUpButton() {

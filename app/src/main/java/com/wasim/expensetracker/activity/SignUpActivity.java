@@ -52,8 +52,8 @@ public class SignUpActivity extends AppCompatActivity {
                             .build(),
                     successResponse -> {
                         Log.i(TAG, "Sign Up SUCCESSFUL" + successResponse);
-                        Intent goToProfilePageActivity = new Intent(SignUpActivity.this, ProfilePageActivity.class);
-                        startActivity(goToProfilePageActivity);
+                        Intent goToVerifyActivity = new Intent(SignUpActivity.this, VerifyActivity.class);
+                        startActivity(goToVerifyActivity);
                     },
                     failureResponse -> Log.i(TAG, "Sign Up FAILED" + failureResponse)
             );
