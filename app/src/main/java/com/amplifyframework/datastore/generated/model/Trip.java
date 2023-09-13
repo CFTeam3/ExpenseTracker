@@ -10,7 +10,10 @@ import java.util.Objects;
 
 import androidx.core.util.ObjectsCompat;
 
+import com.amplifyframework.core.model.AuthStrategy;
 import com.amplifyframework.core.model.Model;
+import com.amplifyframework.core.model.ModelOperation;
+import com.amplifyframework.core.model.annotations.AuthRule;
 import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
@@ -20,13 +23,15 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
 /** This is an auto generated class representing the Trip type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "Trips", type = Model.Type.USER, version = 1)
+@ModelConfig(pluralName = "Trips", type = Model.Type.USER, version = 1, authRules = {
+  @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
+})
 public final class Trip implements Model {
   public static final QueryField ID = field("Trip", "id");
   public static final QueryField USER_ID = field("Trip", "userID");
   public static final QueryField NAME = field("Trip", "name");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="ID", isRequired = true) String userID;
+  private final @ModelField(targetType="String", isRequired = true) String userID;
   private final @ModelField(targetType="String", isRequired = true) String name;
   private final @ModelField(targetType="Expense") @HasMany(associatedWith = "trip", type = Expense.class) List<Expense> expenses = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;

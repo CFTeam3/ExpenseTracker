@@ -9,9 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Trip;
 import com.wasim.expensetracker.activity.ProfilePageActivity;
 import com.wasim.expensetracker.activity.SignUpActivity;
 
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 },
                 error -> Log.e(TAG, "Auth session fetch failed: " + error.toString())
         );
+
+
 
         setupLoginButton();
         setupSignUpButton();

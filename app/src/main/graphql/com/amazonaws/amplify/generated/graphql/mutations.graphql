@@ -1,83 +1,5 @@
 # this is an auto generated file. This will be overwritten
 
-mutation CreateUser(
-  $input: CreateUserInput!
-  $condition: ModelUserConditionInput
-) {
-  createUser(input: $input, condition: $condition) {
-    id
-    username
-    trips {
-      items {
-        id
-        userID
-        name
-        createdAt
-        updatedAt
-        userTripsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-
-mutation UpdateUser(
-  $input: UpdateUserInput!
-  $condition: ModelUserConditionInput
-) {
-  updateUser(input: $input, condition: $condition) {
-    id
-    username
-    trips {
-      items {
-        id
-        userID
-        name
-        createdAt
-        updatedAt
-        userTripsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-
-mutation DeleteUser(
-  $input: DeleteUserInput!
-  $condition: ModelUserConditionInput
-) {
-  deleteUser(input: $input, condition: $condition) {
-    id
-    username
-    trips {
-      items {
-        id
-        userID
-        name
-        createdAt
-        updatedAt
-        userTripsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-
 mutation CreateTrip(
   $input: CreateTripInput!
   $condition: ModelTripConditionInput
@@ -85,17 +7,6 @@ mutation CreateTrip(
   createTrip(input: $input, condition: $condition) {
     id
     userID
-    user {
-      id
-      username
-      trips {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     name
     expenses {
       items {
@@ -113,7 +24,6 @@ mutation CreateTrip(
     }
     createdAt
     updatedAt
-    userTripsId
     __typename
   }
 }
@@ -125,17 +35,6 @@ mutation UpdateTrip(
   updateTrip(input: $input, condition: $condition) {
     id
     userID
-    user {
-      id
-      username
-      trips {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     name
     expenses {
       items {
@@ -153,7 +52,6 @@ mutation UpdateTrip(
     }
     createdAt
     updatedAt
-    userTripsId
     __typename
   }
 }
@@ -165,17 +63,6 @@ mutation DeleteTrip(
   deleteTrip(input: $input, condition: $condition) {
     id
     userID
-    user {
-      id
-      username
-      trips {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     name
     expenses {
       items {
@@ -193,7 +80,6 @@ mutation DeleteTrip(
     }
     createdAt
     updatedAt
-    userTripsId
     __typename
   }
 }
@@ -208,13 +94,6 @@ mutation CreateExpense(
     trip {
       id
       userID
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        __typename
-      }
       name
       expenses {
         nextToken
@@ -222,7 +101,6 @@ mutation CreateExpense(
       }
       createdAt
       updatedAt
-      userTripsId
       __typename
     }
     description
@@ -244,13 +122,6 @@ mutation UpdateExpense(
     trip {
       id
       userID
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        __typename
-      }
       name
       expenses {
         nextToken
@@ -258,7 +129,6 @@ mutation UpdateExpense(
       }
       createdAt
       updatedAt
-      userTripsId
       __typename
     }
     description
@@ -280,13 +150,6 @@ mutation DeleteExpense(
     trip {
       id
       userID
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        __typename
-      }
       name
       expenses {
         nextToken
@@ -294,7 +157,6 @@ mutation DeleteExpense(
       }
       createdAt
       updatedAt
-      userTripsId
       __typename
     }
     description

@@ -11,9 +11,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Trip;
 import com.wasim.expensetracker.MainActivity;
 import com.wasim.expensetracker.R;
 
@@ -36,6 +38,16 @@ public class ProfilePageActivity extends AppCompatActivity {
         setupUsernameTextView(username);
         setupTripsImageButton();
         setupLogoutButton();
+
+//        Trip testTrip = Trip.builder().userId("TestUserID").name("TestTripName").build();
+//
+//        Amplify.API.mutate(
+//                ModelMutation.create(testTrip),
+//                success -> {
+//                    Log.i(TAG, "Created Test Trip");
+//                },
+//                failure -> Log.i(TAG, "Test Trip Failed")
+//        );
     }
 
     void setupUsernameTextView(String userName) {

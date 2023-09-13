@@ -1,89 +1,9 @@
 # this is an auto generated file. This will be overwritten
 
-subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
-  onCreateUser(filter: $filter) {
-    id
-    username
-    trips {
-      items {
-        id
-        userID
-        name
-        createdAt
-        updatedAt
-        userTripsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-
-subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
-  onUpdateUser(filter: $filter) {
-    id
-    username
-    trips {
-      items {
-        id
-        userID
-        name
-        createdAt
-        updatedAt
-        userTripsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-
-subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
-  onDeleteUser(filter: $filter) {
-    id
-    username
-    trips {
-      items {
-        id
-        userID
-        name
-        createdAt
-        updatedAt
-        userTripsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-
 subscription OnCreateTrip($filter: ModelSubscriptionTripFilterInput) {
   onCreateTrip(filter: $filter) {
     id
     userID
-    user {
-      id
-      username
-      trips {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     name
     expenses {
       items {
@@ -101,7 +21,6 @@ subscription OnCreateTrip($filter: ModelSubscriptionTripFilterInput) {
     }
     createdAt
     updatedAt
-    userTripsId
     __typename
   }
 }
@@ -110,17 +29,6 @@ subscription OnUpdateTrip($filter: ModelSubscriptionTripFilterInput) {
   onUpdateTrip(filter: $filter) {
     id
     userID
-    user {
-      id
-      username
-      trips {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     name
     expenses {
       items {
@@ -138,7 +46,6 @@ subscription OnUpdateTrip($filter: ModelSubscriptionTripFilterInput) {
     }
     createdAt
     updatedAt
-    userTripsId
     __typename
   }
 }
@@ -147,17 +54,6 @@ subscription OnDeleteTrip($filter: ModelSubscriptionTripFilterInput) {
   onDeleteTrip(filter: $filter) {
     id
     userID
-    user {
-      id
-      username
-      trips {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     name
     expenses {
       items {
@@ -175,7 +71,6 @@ subscription OnDeleteTrip($filter: ModelSubscriptionTripFilterInput) {
     }
     createdAt
     updatedAt
-    userTripsId
     __typename
   }
 }
@@ -187,13 +82,6 @@ subscription OnCreateExpense($filter: ModelSubscriptionExpenseFilterInput) {
     trip {
       id
       userID
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        __typename
-      }
       name
       expenses {
         nextToken
@@ -201,7 +89,6 @@ subscription OnCreateExpense($filter: ModelSubscriptionExpenseFilterInput) {
       }
       createdAt
       updatedAt
-      userTripsId
       __typename
     }
     description
@@ -220,13 +107,6 @@ subscription OnUpdateExpense($filter: ModelSubscriptionExpenseFilterInput) {
     trip {
       id
       userID
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        __typename
-      }
       name
       expenses {
         nextToken
@@ -234,7 +114,6 @@ subscription OnUpdateExpense($filter: ModelSubscriptionExpenseFilterInput) {
       }
       createdAt
       updatedAt
-      userTripsId
       __typename
     }
     description
@@ -253,13 +132,6 @@ subscription OnDeleteExpense($filter: ModelSubscriptionExpenseFilterInput) {
     trip {
       id
       userID
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        __typename
-      }
       name
       expenses {
         nextToken
@@ -267,7 +139,6 @@ subscription OnDeleteExpense($filter: ModelSubscriptionExpenseFilterInput) {
       }
       createdAt
       updatedAt
-      userTripsId
       __typename
     }
     description
