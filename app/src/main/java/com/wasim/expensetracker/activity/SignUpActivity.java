@@ -1,7 +1,9 @@
 package com.wasim.expensetracker.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import androidx.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +44,12 @@ public class SignUpActivity extends AppCompatActivity {
             String username = usernameEditText.getText().toString();
             String password = passwordEditText.getText().toString();
             String email = emailEditText.getText().toString();
+
+            // Saving the username in SharedPreferences here but may need to change if cognito works with username instead
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("USERNAME", username);
+            editor.apply();
 
             Amplify.Auth.signUp(
                     email,
