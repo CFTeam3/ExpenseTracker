@@ -16,7 +16,7 @@ import com.amplifyframework.datastore.generated.model.Trip;
 import com.wasim.expensetracker.R;
 
 public class CreateTripActivity extends AppCompatActivity {
-    private final String TAG = "CreateTripActivity";
+    private final String TAG = "*** CREATE TRIP ACTIVITY: ";
 
     Button cancelButton;
 
@@ -81,6 +81,8 @@ public class CreateTripActivity extends AppCompatActivity {
             } else {
                 Log.e(TAG, "Trip failed to build");
             }
+            Intent goToAllTripsActivityPage = new Intent(CreateTripActivity.this, AllTripsActivity.class);
+            startActivity(goToAllTripsActivityPage);
             Toast.makeText(CreateTripActivity.this, "Trip saved!", Toast.LENGTH_SHORT).show();
         });
     }

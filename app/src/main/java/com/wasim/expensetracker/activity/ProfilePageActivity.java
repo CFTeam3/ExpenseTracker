@@ -20,7 +20,7 @@ import com.wasim.expensetracker.MainActivity;
 import com.wasim.expensetracker.R;
 
 public class ProfilePageActivity extends AppCompatActivity {
-    private final String TAG = "PROFILE PAGE ACTIVITY";
+    private final String TAG = "*** PROFILE PAGE ACTIVITY";
     public final String USERNAME_TAG = "Username";
     Button logoutButton;
 

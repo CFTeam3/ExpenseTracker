@@ -19,7 +19,7 @@ import com.wasim.expensetracker.activity.SignUpActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String TAG = "MAIN ACTIVITY";
+    private final String TAG = "*** MAIN ACTIVITY: ";
 
     Button loginButton;
 
