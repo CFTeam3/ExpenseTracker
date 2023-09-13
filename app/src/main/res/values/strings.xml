@@ -29,4 +29,12 @@
     <string name="add_this_expense">Add This Expense</string>
     <string name="cancel">Cancel</string>
     <string name="password">Password</string>
+    <string name="MainActivityBGImage">"Deck over looking an ocean vista. "</string>
+    <string name="logout">Logout</string>
+    <string name="done">DONE</string>
+    <string name="create_a_trip">Create A Trip</string>
+    <string name="add_trip">Add Trip</string>
+    <string name="enter_trip_name">Enter trip name</string>
+    <string name="what_is_the_name_of_your_trip">What is the name of your trip?</string>
+    <string name="your_trips">Your Trips</string>
 </resources>
