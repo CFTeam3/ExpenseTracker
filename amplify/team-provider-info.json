@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "expensetrackerc56cddf0": {}
+      },
+      "api": {
+        "expensetracker": {}
       }
     }
   }
