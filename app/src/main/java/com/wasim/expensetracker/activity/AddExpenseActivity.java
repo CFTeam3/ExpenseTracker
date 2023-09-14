@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.Expense;
 import com.amplifyframework.datastore.generated.model.Trip;
@@ -51,24 +52,34 @@ public class AddExpenseActivity extends AppCompatActivity {
 
             if (selectedTripId != null) {
 
-                Expense expenseToSave = Expense.builder()
-                        .description(descriptionEditText.getText().toString())
-                        .amount(Double.parseDouble(amountNumberEditText.getText().toString()))
-                        .build();
+                Amplify.API.query(
+                        ModelQuery.get(Trip.class, selectedTripId),
+                        response -> {
+                            Trip trip = response.getData();
 
-                Amplify.API.mutate(
-                        ModelMutation.create(expenseToSave),
-                        successResponse -> Log.i(TAG, "AddExpenseActivity.setUpAddThisExpenseButton(): created expense successfully"),
-                        failureResponse -> Log.i(TAG, "AddExpenseActivity.setUpAddThisExpenseButton(): failure response " + failureResponse)
+                            Expense expenseToSave = Expense.builder()
+                                    .description(descriptionEditText.getText().toString())
+                                    .amount(Double.parseDouble(amountNumberEditText.getText().toString()))
+                                    .trip(trip)
+                                    .build();
+
+                            Amplify.API.mutate(
+                                    ModelMutation.create(expenseToSave),
+                                    successResponse -> Log.i(TAG, "AddExpenseActivity.setUpAddThisExpenseButton(): created expense successfully"),
+                                    failureResponse -> Log.i(TAG, "AddExpenseActivity.setUpAddThisExpenseButton(): failure response " + failureResponse)
+                            );
+
+                        },
+                        error -> Log.e(TAG, "Could not get Trip", error)
                 );
             } else {
                 Log.e(TAG, "Expense failed to build");
             }
+
             Intent goToTripDetailsActivityPage = new Intent(AddExpenseActivity.this, TripDetailsActivity.class);
             startActivity(goToTripDetailsActivityPage);
             Toast.makeText(AddExpenseActivity.this, "Expense saved!", Toast.LENGTH_SHORT).show();
         });
-
     }
 
 
