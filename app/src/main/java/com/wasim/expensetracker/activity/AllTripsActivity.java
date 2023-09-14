@@ -3,8 +3,6 @@ package com.wasim.expensetracker.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,8 +12,6 @@ import com.amplifyframework.datastore.generated.model.Trip;
 import com.wasim.expensetracker.R;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
-
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +28,8 @@ public class AllTripsActivity extends AppCompatActivity {
     Button createNewTripButton;
     Spinner allTripsSpinner;
 
-    ArrayList<Trip> trips = new ArrayList<>();
+    ArrayList<Trip> userTrips = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,44 +42,35 @@ public class AllTripsActivity extends AppCompatActivity {
         allTripsSpinner = findViewById(R.id.AllTripsActivitySpinner);
 
 
+
+
         Amplify.Auth.getCurrentUser(
-                success -> {
-                    Log.i(TAG, "User authenticated with username: " + success.getUsername());
-                    authUser = success;
-                    runOnUiThread(() -> {
-                    });
+                authUser -> {
+                    String currentUserId = authUser.getUserId();
+                    Amplify.API.query(
+                            ModelQuery.list(Trip.class, Trip.USER_ID.eq(currentUserId)),
+                            response -> {
+                                for (Trip trip : response.getData()) {
+                                    userTrips.add(trip);
+                                }
+                                ArrayList<String> tripNames = new ArrayList<>();
+                                for (Trip userTrip : userTrips) {
+                                    tripNames.add(userTrip.getName());
+                                }
+                                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tripNames);
+                                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                runOnUiThread(() -> allTripsSpinner.setAdapter(adapter));
+                            },
+                            error -> Log.e(TAG, "Could not query DataStore", error)
+                    );
                 },
-                failure -> {
-                    Log.i(TAG, "There is no current authenticated user");
-                    authUser = null;
-                    runOnUiThread(() -> {
-                    });
-                }
+                authError -> Log.e(TAG, "User is not authenticated")
         );
 
-        ArrayAdapter<Trip> adapter = new ArrayAdapter<Trip>(this, android.R.layout.simple_spinner_item, trips) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                TextView text = (TextView) view.findViewById(android.R.id.text1);
-                text.setText(trips.get(position).getName());
-                return view;
-            }
-
-            @Override
-            public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                View view = super.getDropDownView(position, convertView, parent);
-                TextView text = (TextView) view.findViewById(android.R.id.text1);
-                text.setText(trips.get(position).getName());
-                return view;
-            }
-        };
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        allTripsSpinner.setAdapter(adapter);
 
 
 
-        fetchTrips(adapter);
+
         setupViewTripButton();
         setupBackButton();
         setupCreateTripButton();
@@ -92,10 +80,11 @@ public class AllTripsActivity extends AppCompatActivity {
     private void setupViewTripButton() {
         viewTripButton.setOnClickListener(v -> {
             Trip selectedTrip = (Trip) allTripsSpinner.getSelectedItem();
-            System.out.println(selectedTrip);
             Intent goToTripDetailsActivityPage = new Intent(AllTripsActivity.this, TripDetailsActivity.class);
+
            goToTripDetailsActivityPage.putExtra("SELECTED_TRIP_ID", selectedTrip.getId());
             goToTripDetailsActivityPage.putExtra("SELECTED_TRIP_NAME", selectedTrip.getName());
+
             startActivity(goToTripDetailsActivityPage);
         });
     }
@@ -113,17 +102,5 @@ public class AllTripsActivity extends AppCompatActivity {
             Intent goToCreateTripActivityPage = new Intent(AllTripsActivity.this, CreateTripActivity.class);
             startActivity(goToCreateTripActivityPage);
         });
-    }
-    private void fetchTrips(ArrayAdapter<Trip> adapter) {
-        Amplify.API.query(
-                ModelQuery.list(Trip.class),
-                response -> {
-                    for (Trip trip : response.getData()) {
-                        trips.add(trip);
-                    }
-                    runOnUiThread(adapter::notifyDataSetChanged);
-                },
-                error -> Log.e(TAG, "Could not query DataStore", error)
-        );
     }
 }
