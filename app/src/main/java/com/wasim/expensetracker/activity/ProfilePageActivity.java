@@ -11,11 +11,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.datastore.generated.model.Trip;
 import com.wasim.expensetracker.MainActivity;
 import com.wasim.expensetracker.R;
 
