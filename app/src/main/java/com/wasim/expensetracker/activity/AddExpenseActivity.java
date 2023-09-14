@@ -1,18 +1,23 @@
 package com.wasim.expensetracker.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.Expense;
+import com.amplifyframework.datastore.generated.model.Trip;
 import com.wasim.expensetracker.R;
 
 public class AddExpenseActivity extends AppCompatActivity {
     private final String TAG = "*** ADD EXPENSE ACTIVITY: ";
-
-    String selectedTripName; //need to look into using ID instead of name unless dynamo can see name to update as well
 
     EditText descriptionEditText;
     EditText amountNumberEditText;
@@ -24,13 +29,12 @@ public class AddExpenseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expense);
 
-        selectedTripName = getIntent().getStringExtra("SELECTED_TRIP_NAME");
+
 
         descriptionEditText = findViewById(R.id.AddExpenseActivityDescriptionPlainText);
         amountNumberEditText = findViewById(R.id.AddExpenseActivityAmountNumberTextView);
         addThisExpenseButton = findViewById(R.id.AddExpenseActivityAddThisExpenseButton);
         cancelButton = findViewById(R.id.AddExpenseActivityCancelButton);
-
 
 
 
@@ -41,15 +45,37 @@ public class AddExpenseActivity extends AppCompatActivity {
 
 
     private void setupAddThisExpenseButton() {
-        addThisExpenseButton.setOnClickListener(view -> {
 
+            addThisExpenseButton.setOnClickListener(view -> {
+                String selectedTripId = getIntent().getStringExtra("SELECTED_TRIP_ID");
 
-        });
+                if (selectedTripId != null) {
+
+                    Expense expenseToSave = Expense.builder()
+                            .description(descriptionEditText.getText().toString())
+                            .amount(Double.parseDouble(amountNumberEditText.getText().toString()))
+                            .build();
+
+                    Amplify.API.mutate(
+                            ModelMutation.create(expenseToSave),
+                            successResponse -> Log.i(TAG, "AddExpenseActivity.setUpAddThisExpenseButton(): created expense successfully"),
+                            failureResponse -> Log.i(TAG, "AddExpenseActivity.setUpAddThisExpenseButton(): failure response " + failureResponse)
+                    );
+                } else {
+                    Log.e(TAG, "Expense failed to build");
+                }
+                Intent goToTripDetailsActivityPage = new Intent(AddExpenseActivity.this, TripDetailsActivity.class);
+                startActivity(goToTripDetailsActivityPage);
+                Toast.makeText(AddExpenseActivity.this, "Expense saved!", Toast.LENGTH_SHORT).show();
+            });
+
     }
+
 
     private void setupCancelButton() {
 
         cancelButton.setOnClickListener(v -> {
+            String selectedTripName = getIntent().getStringExtra("SELECTED_TRIP_NAME");
             Intent goToTripDetailsActivityPage = new Intent(AddExpenseActivity.this, TripDetailsActivity.class);
             goToTripDetailsActivityPage.putExtra("SELECTED_TRIP_NAME", selectedTripName);
             startActivity(goToTripDetailsActivityPage);

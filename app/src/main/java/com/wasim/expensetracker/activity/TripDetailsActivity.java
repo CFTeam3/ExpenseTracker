@@ -26,7 +26,6 @@ public class TripDetailsActivity extends AppCompatActivity {
         backButton = findViewById(R.id.TripDetailsActivityBackButton);
 
         tripDetailsHeader = findViewById(R.id.TripDetailsActivityHeader);
-        // Get the selected trip name from the Intent
         String selectedTripName = getIntent().getStringExtra("SELECTED_TRIP_NAME");
         String headerText = selectedTripName + " Summary";
         tripDetailsHeader.setText(headerText);
@@ -36,14 +35,17 @@ public class TripDetailsActivity extends AppCompatActivity {
         setupBackButton();
     }
 
-    private void fetchAndDisplayExpenses(String tripName) {
+    private void fetchAndDisplayExpenses(String selectedTripName) {
         // Need to get expenses now.
     }
 
     private void setupAddExpenseButton() {
         addExpenseButton.setOnClickListener(v -> {
-            String selectedTripName = tripDetailsHeader.getText().toString().replace(" Summary", "");
+            String selectedTripName = getIntent().getStringExtra("SELECTED_TRIP_NAME");
+            String selectedTripId = getIntent().getStringExtra("SELECTED_TRIP_ID");
+            System.out.println("This is the selectedTripId " + selectedTripId);
             Intent goToAddExpenseActivity = new Intent(TripDetailsActivity.this, AddExpenseActivity.class);
+            goToAddExpenseActivity.putExtra("SELECTED_TRIP_ID", selectedTripId);
             goToAddExpenseActivity.putExtra("SELECTED_TRIP_NAME", selectedTripName);
             startActivity(goToAddExpenseActivity);
         });
