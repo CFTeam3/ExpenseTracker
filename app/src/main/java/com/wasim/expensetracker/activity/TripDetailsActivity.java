@@ -13,9 +13,9 @@ public class TripDetailsActivity extends AppCompatActivity {
     private final String TAG = "*** TRIP DETAILS ACTIVITY: ";
 
     TextView tripDetailsHeader;
-
     Button addExpenseButton;
     Button backButton;
+    String selectedTripName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
