@@ -76,7 +76,9 @@ public class AddExpenseActivity extends AppCompatActivity {
                 Log.e(TAG, "Expense failed to build");
             }
 
+            String selectedTripName = getIntent().getStringExtra("SELECTED_TRIP_NAME");
             Intent goToTripDetailsActivityPage = new Intent(AddExpenseActivity.this, TripDetailsActivity.class);
+            goToTripDetailsActivityPage.putExtra("SELECTED_TRIP_NAME", selectedTripName);
             startActivity(goToTripDetailsActivityPage);
             Toast.makeText(AddExpenseActivity.this, "Expense saved!", Toast.LENGTH_SHORT).show();
         });

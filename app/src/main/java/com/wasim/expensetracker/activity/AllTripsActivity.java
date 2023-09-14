@@ -46,18 +46,38 @@ public class AllTripsActivity extends AppCompatActivity {
 
 
         Amplify.Auth.getCurrentUser(
-                success -> {
-                    Log.i(TAG, "User authenticated with username: " + success.getUsername());
-                    authUser = success;
-                    runOnUiThread(() -> {
-                    });
+                authUser -> {
+                    String currentUserId = authUser.getUserId();
+                    Amplify.API.query(
+                            ModelQuery.list(Trip.class, Trip.USER_ID.eq(currentUserId)),
+                            response -> {
+                                for (Trip trip : response.getData()) {
+                                    trips.add(trip);
+                                }
+                                ArrayAdapter<Trip> adapter = new ArrayAdapter<Trip>(this, android.R.layout.simple_spinner_item, trips) {
+                                    @Override
+                                    public View getView(int position, View convertView, ViewGroup parent) {
+                                        View view = super.getView(position, convertView, parent);
+                                        TextView text = (TextView) view.findViewById(android.R.id.text1);
+                                        text.setText(trips.get(position).getName());
+                                        return view;
+                                    }
+
+                                    @Override
+                                    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+                                        View view = super.getDropDownView(position, convertView, parent);
+                                        TextView text = (TextView) view.findViewById(android.R.id.text1);
+                                        text.setText(trips.get(position).getName());
+                                        return view;
+                                    }
+                                };
+                                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                runOnUiThread(() -> allTripsSpinner.setAdapter(adapter));
+                            },
+                            error -> Log.e(TAG, "Could not query DataStore", error)
+                    );
                 },
-                failure -> {
-                    Log.i(TAG, "There is no current authenticated user");
-                    authUser = null;
-                    runOnUiThread(() -> {
-                    });
-                }
+                authError -> Log.e(TAG, "User is not authenticated")
         );
 
         ArrayAdapter<Trip> adapter = new ArrayAdapter<Trip>(this, android.R.layout.simple_spinner_item, trips) {
@@ -77,12 +97,9 @@ public class AllTripsActivity extends AppCompatActivity {
                 return view;
             }
         };
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        allTripsSpinner.setAdapter(adapter);
 
 
 
-        fetchTrips(adapter);
         setupViewTripButton();
         setupBackButton();
         setupCreateTripButton();
@@ -113,17 +130,5 @@ public class AllTripsActivity extends AppCompatActivity {
             Intent goToCreateTripActivityPage = new Intent(AllTripsActivity.this, CreateTripActivity.class);
             startActivity(goToCreateTripActivityPage);
         });
-    }
-    private void fetchTrips(ArrayAdapter<Trip> adapter) {
-        Amplify.API.query(
-                ModelQuery.list(Trip.class),
-                response -> {
-                    for (Trip trip : response.getData()) {
-                        trips.add(trip);
-                    }
-                    runOnUiThread(adapter::notifyDataSetChanged);
-                },
-                error -> Log.e(TAG, "Could not query DataStore", error)
-        );
     }
 }
