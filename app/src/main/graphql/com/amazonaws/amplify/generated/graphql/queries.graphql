@@ -1,65 +1,9 @@
 # this is an auto generated file. This will be overwritten
 
-query GetUser($id: ID!) {
-  getUser(id: $id) {
-    id
-    username
-    trips {
-      items {
-        id
-        userID
-        name
-        createdAt
-        updatedAt
-        userTripsId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-    createdAt
-    updatedAt
-    __typename
-  }
-}
-
-query ListUsers(
-  $filter: ModelUserFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      username
-      trips {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
-    nextToken
-    __typename
-  }
-}
-
 query GetTrip($id: ID!) {
   getTrip(id: $id) {
     id
     userID
-    user {
-      id
-      username
-      trips {
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
     name
     expenses {
       items {
@@ -77,7 +21,6 @@ query GetTrip($id: ID!) {
     }
     createdAt
     updatedAt
-    userTripsId
     __typename
   }
 }
@@ -91,13 +34,6 @@ query ListTrips(
     items {
       id
       userID
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        __typename
-      }
       name
       expenses {
         nextToken
@@ -105,7 +41,6 @@ query ListTrips(
       }
       createdAt
       updatedAt
-      userTripsId
       __typename
     }
     nextToken
@@ -120,13 +55,6 @@ query GetExpense($id: ID!) {
     trip {
       id
       userID
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        __typename
-      }
       name
       expenses {
         nextToken
@@ -134,7 +62,6 @@ query GetExpense($id: ID!) {
       }
       createdAt
       updatedAt
-      userTripsId
       __typename
     }
     description
@@ -161,7 +88,6 @@ query ListExpenses(
         name
         createdAt
         updatedAt
-        userTripsId
         __typename
       }
       description

@@ -1,32 +1,17 @@
 {
   "api": {
     "expensetracker": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "expensetrackerc56cddf0"
-        }
-      ],
+      "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "apiKeyConfig": {
-                "apiKeyExpirationDate": "2024-09-10T18:28:13.826Z",
-                "apiKeyExpirationDays": 365,
-                "description": "sandbox"
-              },
-              "authenticationType": "API_KEY"
-            }
-          ],
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authexpensetrackerc56cddf0"
-            }
+            "apiKeyConfig": {
+              "apiKeyExpirationDate": "2024-09-12T19:16:46.718Z",
+              "apiKeyExpirationDays": 365,
+              "description": "NewAPIKey"
+            },
+            "authenticationType": "API_KEY"
           }
         }
       },
