@@ -4,15 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#118C4F"
     tools:context=".activity.AddExpenseActivity">
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="362dp"
+        android:layout_height="62dp"
         android:layout_marginTop="10dp"
+        android:background="#118C4F"
+        android:fontFamily="@font/metamorphous"
         android:text="@string/add_your_expense"
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="34sp"
+        android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,15 +31,18 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="50dp"
+        android:autofillHints=""
+        android:background="#09D670"
         android:ems="10"
         android:hint="@string/expense_name_or_description"
         android:inputType="text"
         android:minHeight="48dp"
-        android:textColorHint="#8D6E63"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        android:autofillHints=""
         tools:ignore="VisualLintTextFieldSize" />
 
     <EditText
@@ -41,25 +50,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:autofillHints=""
+        android:background="#09D670"
         android:ems="10"
         android:hint="@string/amount"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
-        android:textColorHint="#8D6E63"
+        android:textAlignment="textStart"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddExpenseActivityDescriptionPlainText"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/AddExpenseActivityDescriptionPlainText" />
 
     <Button
         android:id="@+id/AddExpenseActivityAddThisExpenseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/add_this_expense"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddExpenseActivityAmountNumberTextView" />
 
@@ -67,10 +79,19 @@
         android:id="@+id/AddExpenseActivityCancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="96dp"
         android:text="@string/cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddExpenseActivityAddThisExpenseButton" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="-3dp"
+        app:srcCompat="@drawable/buildingimg"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

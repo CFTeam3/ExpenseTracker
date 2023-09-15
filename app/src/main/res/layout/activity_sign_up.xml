@@ -1,38 +1,66 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#0091EA"
     android:padding="16dp"
     tools:context=".activity.SignUpActivity">
 
-    <EditText
-        android:id="@+id/SignUpActivityCreateUsernamePlainText"
+    <!-- This ImageView will act as the background. -->
+
+    <!-- Nested LinearLayout for holding the form elements -->
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="395dp"
+        android:layout_height="227dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="274dp"
+        android:adjustViewBounds="true"
+        android:elevation="-2dp"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/holeimg" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
-        android:inputType="textPersonName" />
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/SignUpActivityEmailEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+        <EditText
+            android:id="@+id/SignUpActivityCreateUsernamePlainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
 
-    <EditText
-        android:id="@+id/SignUpActivityCreatePasswordTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/SignUpActivityEmailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
 
-    <Button
-        android:id="@+id/SignUpActivitySignUpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Sign Up Now" />
+        <EditText
+            android:id="@+id/SignUpActivityCreatePasswordTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/SignUpActivitySignUpButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sign Up Now" />
+    </LinearLayout>
+
+</RelativeLayout>
