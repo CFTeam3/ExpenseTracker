@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
+import com.amplifyframework.auth.AuthUser;
 import com.amplifyframework.auth.cognito.result.AWSCognitoAuthSignOutResult;
 import com.amplifyframework.auth.options.AuthSignOutOptions;
 import com.amplifyframework.core.Amplify;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText emailEditText;
     Button logoutButton;
+
 
 
     @Override
