@@ -20,6 +20,7 @@ import com.wasim.expensetracker.R;
 public class AddExpenseActivity extends AppCompatActivity {
     private final String TAG = "*** ADD EXPENSE ACTIVITY: ";
 
+
     EditText descriptionEditText;
     EditText amountNumberEditText;
     Button addThisExpenseButton;
@@ -65,7 +66,12 @@ public class AddExpenseActivity extends AppCompatActivity {
 
                             Amplify.API.mutate(
                                     ModelMutation.create(expenseToSave),
-                                    successResponse -> Log.i(TAG, "AddExpenseActivity.setUpAddThisExpenseButton(): created expense successfully"),
+                                    successResponse -> {
+                                        Log.i(TAG, "AddExpenseActivity.setUpAddThisExpenseButton(): created expense successfully");
+                                        Intent resultIntent = new Intent();
+                                        setResult(RESULT_OK, resultIntent);
+                                        finish();
+                                    },
                                     failureResponse -> Log.i(TAG, "AddExpenseActivity.setUpAddThisExpenseButton(): failure response " + failureResponse)
                             );
 
@@ -76,10 +82,6 @@ public class AddExpenseActivity extends AppCompatActivity {
                 Log.e(TAG, "Expense failed to build");
             }
 
-            String selectedTripName = getIntent().getStringExtra("SELECTED_TRIP_NAME");
-            Intent goToTripDetailsActivityPage = new Intent(AddExpenseActivity.this, TripDetailsActivity.class);
-            goToTripDetailsActivityPage.putExtra("SELECTED_TRIP_NAME", selectedTripName);
-            startActivity(goToTripDetailsActivityPage);
             Toast.makeText(AddExpenseActivity.this, "Expense saved!", Toast.LENGTH_SHORT).show();
         });
     }
