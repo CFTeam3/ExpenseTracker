@@ -5,6 +5,7 @@
     android:id="@+id/verify_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0091EA"
     android:padding="16dp"
     tools:context=".activity.VerifyActivity">
 
@@ -14,6 +15,8 @@
         android:layout_height="52dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +29,8 @@
         android:layout_marginTop="16dp"
         android:hint="Verification Code"
         android:inputType="number"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,4 +45,14 @@
         app:layout_constraintTop_toBottomOf="@id/VerifyActivityVerificationCodeEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="412dp"
+        android:layout_height="737dp"
+        android:elevation="-3dp"
+        app:srcCompat="@drawable/watervalleyimg"
+        tools:layout_editor_absoluteX="-17dp"
+        tools:layout_editor_absoluteY="-13dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

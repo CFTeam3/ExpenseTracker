@@ -37,4 +37,5 @@
     <string name="enter_trip_name">Enter trip name</string>
     <string name="what_is_the_name_of_your_trip">What is the name of your trip?</string>
     <string name="your_trips">Your Trips</string>
+    <string name="All_Trips_Activity_Title">Your Trips</string>
 </resources>
